@@ -16,13 +16,12 @@ function App() {
 
   const URL =  'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true';
 
-  useEffect(()=>{
-      axios.get(URL).then((res)=>{
-        console.log(res.data);
-        setCoins(res.data)
-      }).catch((err)=>{err})
+   useEffect(()=>{
+  axios.get(URL).then((res)=>{
+    setCoins(res.data)
+  }).catch((err)=>{err})
  
-  },[URL]);
+   },[URL]);
 
   return (
     <ThemeProvider>

@@ -34,7 +34,7 @@ const handleNav = () => {
         {/* Mobile Menu */}
         <div className={
             nav ? 'md:hidden absolute left-0 top-20 flex flex-col justify-between items-center w-full h-[90%] bg-primary ease-in duration-300 z-10' 
-                : 'fixed left-[-100%] top-20 flex flex-col justify-between items-center w-full h-[90%] ease-in duration-300'
+                : 'absolute left-[-100%] top-20 flex flex-col justify-between items-center w-full h-[90%] ease-in duration-300'
         }>
             <ul className='w-full p-4'>
                 <li className='border-b p-6'>
