@@ -10,15 +10,15 @@ const Trending = () => {
   useState(()=> {
 axios.get(url).then((res)=> {
   setTrending(res.data.coins)
-  console.log(res.data.coins);
 })
   },[])
+
   return (
     <div className='rounded-div my-12 py-8 text-primary'>
       <h1 className='text-2xl font-bold py-4'>Trending Coins</h1>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
-        {trending.map((coin) => (
-         <div className='rounded-div flex justify-between p-4 hover:scale-105 ease-out duration-300'>
+        {trending.map((coin,index) => (
+         <div key={index} className='rounded-div flex justify-between p-4 hover:scale-105 ease-out duration-300'>
             <div className='flex w-full items-center justify-between'>
               <div className='flex'>
                 <img className='rounded-full mr-4' src={coin.item.small} alt="/" />
