@@ -9,6 +9,7 @@ const Trending = () => {
 
   useState(()=> {
 axios.get(url).then((res)=> {
+  console.log(res.data.coins);
   setTrending(res.data.coins)
 })
   },[])
