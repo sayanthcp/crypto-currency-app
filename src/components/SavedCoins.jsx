@@ -6,7 +6,7 @@ const SavedCoins = () => {
     const [coins, setCoins] = useState([])
   return (
     <div>
-      {coins.length === 0 ? (<p>
+      {coins?.length === 0 ? (<p>
         You don't have any coin saved. Please save a coin to add it to your watch list. <Link className='text-gray-500' to="/">Click here to search coins.</Link>
       </p>) : (
         <table className='w-full border-collapse text-center'>
@@ -18,11 +18,11 @@ const SavedCoins = () => {
                 </tr>
             </thead>
             <tbody>
-                {coins.map((coin,)=> {
-                    <tr key={coin.id} className='h-[60px] overflow-hidden'>
+                {coins?.map((coin)=> {
+                    <tr key={coin?.id} className='h-[60px] overflow-hidden'>
                         <td>{coin?.rank}</td>
                         <td>
-                            <Link to={`/coin/${coin.id}`}>
+                            <Link to={`/coin/${coin?.id}`}>
                                 <div className='flex items-center'>
                                     <img src={coin?.image} className='w-8 mr-4' alt="/" />
                                     <div>
