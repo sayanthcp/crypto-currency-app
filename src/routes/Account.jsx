@@ -8,14 +8,17 @@ const Account = () => {
   const {user,logOut} = UserAuth()
   const navigate = useNavigate()
 
+
+  //signout func
   const handleSignOut = async () => {
     try {
       await logOut()
-      navigate('/')
+      navigate('/signin')
     } catch (e) {
-      console.log(e.message);
+      // console.log(e.message);
     }
   }
+
 
   if(user){
     return (
@@ -34,7 +37,7 @@ const Account = () => {
         <div className='flex justify-between my-12 py-8 items-center rounded-div'>
           <div className='min-h-[300px]'>
             <h1 className='text-2xl font-bold py-2'>Watch list</h1>
-            <SavedCoins />
+            <SavedCoins />              
           </div>
         </div>
         

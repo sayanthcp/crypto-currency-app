@@ -16,8 +16,8 @@ const CoinPage = () => {
 
   useEffect(() => {
     axios.get(url).then((res) => {
-      console.log(res.data);
       setCoin(res.data)
+      console.log("==",res.data);
     })
   },[url])
 
@@ -71,37 +71,37 @@ const CoinPage = () => {
           <div className='flex justify-between py-4'>
             <div>
               <p className='text-gray-500 text-sm'>Market Rank</p>
-              {coin.market_cap_rank}
+              {coin?.market_cap_rank}
             </div>
             <div>
               <p className='text-gray-500 text-sm'>Hashing Algorithm</p>
-              {coin.hashing_algorithm ? <p>{coin.hashing_algorithm}</p> : null}
+              {coin?.hashing_algorithm ? <p>{coin.hashing_algorithm}</p> : null}
             </div>
             <div>
               <p className='text-gray-500 text-sm'>Trust Score</p>
-              {coin.tickers ? <p>{coin.liquidity_score.toFixed(2)}</p> : null}
+              {coin?.tickers ? <p>{coin.liquidity_score.toFixed(2)}</p> : null}
             </div>
           </div>
 
           <div className='flex justify-between py-4'>
             <div>
               <p className='text-gray-500 text-sm'>Price Change (24h)</p>
-              {coin.market_data ? <p>{coin.market_data.price_change_percentage_24h.toFixed(2)}%</p> : null}
+              {coin?.market_data ? <p>{coin.market_data.price_change_percentage_24h.toFixed(2)}%</p> : null}
             </div>
             <div>
               <p className='text-gray-500 text-sm'>Price Change (14d)</p>
-              {coin.market_data ? <p>{coin.market_data.price_change_percentage_14d.toFixed(2)}%</p> : null}
+              {coin?.market_data ? <p>{coin.market_data.price_change_percentage_14d.toFixed(2)}%</p> : null}
             </div>
             <div>
               <p className='text-gray-500 text-sm'>Price Change (7d)</p>
-              {coin.market_data ? <p>{coin.market_data.price_change_percentage_7d.toFixed(2)}%</p> : null}
+              {coin?.market_data ? <p>{coin.market_data.price_change_percentage_7d.toFixed(2)}%</p> : null}
             </div>
           </div>
 
           <div className='flex justify-between py-4'>
             <div>
               <p className='text-gray-500 text-sm'>Price Change (30d)</p>
-              {coin.market_data ? <p>{coin.market_data.price_change_percentage_30d.toFixed(2)}%</p> : null}
+              {coin?.market_data ? <p>{coin.market_data.price_change_percentage_30d.toFixed(2)}%</p> : null}
             </div>
             <div>
               <p className='text-gray-500 text-sm'>Price Change (60d)</p>
@@ -136,5 +136,3 @@ const CoinPage = () => {
 
 export default CoinPage
 
-//Optional chaining
-// {coin.description?.en}

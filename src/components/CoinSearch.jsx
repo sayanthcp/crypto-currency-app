@@ -11,7 +11,7 @@ const CoinSearch = ({coins}) => {
         <div className='flex flex-col md:flex-row justify-between pt-4 pb-6 text-center md:text-right'>
             <h1 className='text-2xl font-bold my-2'>Search Crypto</h1>
             <form>
-                <input onChange={(e)=> setSearchText(e.target.value)} className='w-full bg-primary border border-input px-4 rounded-2xl shadow-xl' type="text" placeholder='search a coin'/>
+                <input onChange={(e)=> setSearchText(e.target.value)} className='w-full bg-primary border border-input px-4 rounded-2xl shadow-xl' type="text" placeholder='Search a coin'/>
             </form>
         </div>
 
@@ -30,11 +30,11 @@ const CoinSearch = ({coins}) => {
                 </tr>
             </thead>
             <tbody>
-                {coins.filter((value)=>{
-                    if(searchText === ''){
+                {coins?.filter((value) => {
+                    if(searchText === '') {
                         return value;
                     }else if (
-                        value.name.toLowerCase().includes(searchText.toLowerCase())
+                        value?.name.toLowerCase().includes(searchText.toLowerCase())
                     ){
                         return value;
                     }

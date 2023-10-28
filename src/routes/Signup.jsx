@@ -17,7 +17,7 @@ const Signup = () => {
     setError('')
     try{
       await signUp(email, password)
-      navigate('/account')
+      navigate('/')
     }catch(e){
       setError(e.message)
 
@@ -46,11 +46,12 @@ const Signup = () => {
               <input 
               onChange={(e)=>setPassword(e.target.value)}
               className='w-full p-2 bg-primary border border-input rounded-2xl' type="password" />
-               {error ? <p className='bg-red-500 text-center p-2 rounded-xl my-2'>invalid password !</p> : null}
+               {error ? <p className='bg-red-500 text-center p-2 rounded-xl my-2'>Invalid password</p> : null}
               <AiFillLock className='absolute right-2 top-3 text-gray-400'/>
             </div>
           </div>
           <button className='w-full my-2 p-3 bg-button text-btnText rounded-2xl shadow-xl'>Sign up</button>
+          
         </form>
         
         <p className='my-4'>Already have an account? <Link className='text-accent' to="/signin">Sign in</Link></p>

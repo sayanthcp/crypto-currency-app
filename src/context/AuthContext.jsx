@@ -1,52 +1,51 @@
-import { createContext, useContext, useState, useEffect } from 'react'
-import {auth,db} from '../firebase'
-import {doc,setDoc} from 'firebase/firestore'
-import {createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged} from 'firebase/auth'
+import { createContext, useContext, useState, useEffect } from "react";
+import { auth, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 //global state
-const UserContext = createContext()
+const UserContext = createContext();
 
-export const AuthContextProvider = ({children}) => {
-    const [user, setUser] = useState({})
-    
-    //sign up fuction
-    const signUp = (email,password) => {
-        createUserWithEmailAndPassword(auth, email,password)
-        return setDoc(doc(db, 'users', email),
-        { watchList:[],})
-    }
+export const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
 
-    //sign in function
-    const signIn = (email,password) => {
-        return signInWithEmailAndPassword(auth, email,password)
-    }
+  //sign up func
+  const signUp = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password);
+    return setDoc(doc(db, "users", email), { watchList: [] });
+  };
 
-    //sign out function
-    const logOut = () => {
-        return signOut(auth)
-    }
+  //sign in func
+  const signIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    useEffect(() =>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-            setUser(currentUser)
-        })
-        return () =>{
-            unsubscribe()
-        }
-    },[])
+  //sign out func
+  const logOut = () => {
+    return signOut(auth);
+  };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-    return(
-        <UserContext.Provider value={{signUp,signIn,logOut,user}}>
-            {children}
-        </UserContext.Provider>
-    )
-}
-
+  return (
+    <UserContext.Provider value={{ signUp, signIn, logOut, user }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
 export const UserAuth = () => {
-    return useContext(UserContext)
-}
+  return useContext(UserContext);
+};

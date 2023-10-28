@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {AiOutlineClose} from 'react-icons/ai'
+import {db} from '../firebase'
+import {doc,onSnapshot,updateDoc} from 'firebase/firestore'
+import { UserAuth } from '../context/AuthContext'
 
 const SavedCoins = () => {
     const [coins, setCoins] = useState([])
+
+    const {user} = UserAuth()
+
+    //added coins in fav list
+    useEffect(() => {
+        onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+            setCoins(doc.data()?.watchList)
+        })
+    },[user?.email])
+
+ 
   return (
     <div>
       {coins?.length === 0 ? (<p>
@@ -24,10 +38,10 @@ const SavedCoins = () => {
                         <td>
                             <Link to={`/coin/${coin?.id}`}>
                                 <div className='flex items-center'>
-                                    <img src={coin?.image} className='w-8 mr-4' alt="/" />
+                                    <img src={coin?.image} className='w-8 mr-4' alt="" />
                                     <div>
                                         <p className='hidden sm:table-cell'>{coin?.name}</p>
-                                        <p className='text-gray-500 text-left text-sm'>{coin?.symbol}</p>
+                                        <p className='text-gray-500 text-left text-sm'>{coin?.symbol.toUpperCase()}</p>
                                     </div>
                                 </div>
                             </Link>

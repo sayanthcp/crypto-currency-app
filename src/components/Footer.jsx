@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FaFacebookF,FaTwitter,FaGithub} from 'react-icons/fa'
 import {AiOutlineInstagram} from 'react-icons/ai' 
 import ThemeToggle from './ThemeToggle'
+import { UserAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+
+  const {signUp} = UserAuth()
+  const navigate = useNavigate()
+
+  //signup function
+  const handleSignUp = async (e) => {
+    e.preventDefault()
+    setError('')
+    try {
+      await signUp(email)
+      navigate('/account')
+
+    }catch(e) {
+      setError(e.message)
+    }
+
+  }
   return (
     <div className='rounded-div mt-8 pt-8 text-primary'>
       <div className='grid md:grid-cols-2'>
@@ -35,8 +56,9 @@ const Footer = () => {
               </div>
               <p className='text-center md:text-right'>Sign up for crypto news</p>
               <div className='py-4'>
-                <form>
-                  <input className='bg-primary border border-input p-2 mr-2 w-full shadow-xl rounded-2xl md:w-[200px]' type="text" placeholder='Enter Your Email' />
+                <form onSubmit={handleSignUp}>
+                  <input onChange={(e)=>setEmail(e.target.value)} className='bg-primary border border-input p-2 mr-2 w-full shadow-xl rounded-2xl md:w-[200px]' type="text" placeholder='Enter Your Email' />
+                  {error ? <p className='text-red-500'>Invalid address</p> : null}
                   <button className='bg-button text-btnText px-4 p-2 w-full rounded-2xl shadow-xl md:w-auto my-2'>Sign Up</button>
                 </form>
               </div>
