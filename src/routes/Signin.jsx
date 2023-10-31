@@ -4,11 +4,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthContext'
 
 const Signin = () => {
-  const {signIn} = UserAuth()
+  //state
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+
   const navigate = useNavigate()
+  const {signIn} = UserAuth()
 
   const handleSignIn = async (e) => {
     e.preventDefault()

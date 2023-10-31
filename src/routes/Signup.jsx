@@ -7,8 +7,9 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  
   const navigate = useNavigate()
-  const {signUp} = UserAuth()
+  const { signUp } = UserAuth()
 
 
   //handle sumbit

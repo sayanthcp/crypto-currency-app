@@ -37,7 +37,9 @@ const Account = () => {
         <div className='flex justify-between my-12 py-8 items-center rounded-div'>
           <div className='min-h-[300px]'>
             <h1 className='text-2xl font-bold py-2'>Watch list</h1>
-            <SavedCoins />              
+
+            <SavedCoins />  
+                        
           </div>
         </div>
         
