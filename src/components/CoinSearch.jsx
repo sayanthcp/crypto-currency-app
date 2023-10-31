@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CoinItems from './CoinItems';
+import { Allcoins } from '../context/CoinContext';
 
 
-const CoinSearch = ({coins}) => {
+const CoinSearch = () => {
     //state
     const [searchText,setSearchText] = useState('')
+
+    const coins = useContext(Allcoins)
 
   return (
     <div className='rounded-div my-4'>
         <div className='flex flex-col md:flex-row justify-between pt-4 pb-6 text-center md:text-right'>
-            <h1 className='text-2xl font-bold my-2'>Search Crypto</h1>
+            <h1 className='text-2xl font-bold my-2 ml-4'>Search Crypto</h1>
             <form>
                 <input onChange={(e)=> setSearchText(e.target.value)} className='w-full bg-primary border border-input px-4 rounded-2xl shadow-xl' type="text" placeholder='Search a coin'/>
             </form>
