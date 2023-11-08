@@ -19,7 +19,7 @@ const CoinContext = ({children}) => {
         setCoins(res.data);
       })
       .catch((err) => {
-        err;
+        // console.log(err);
       });
   }, [URL]);
 

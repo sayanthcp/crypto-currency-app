@@ -27,7 +27,7 @@ function App() {
             <Route path="/signup" element={ <Signup /> } />
             <Route path="/account" element={ <Account /> }/>
             <Route path="/coin/:coinId" element={ <CoinPage /> }>
-              {/* <Route path=":coinId" /> */}
+              <Route path=":coinId" />
             </Route>
           </Routes>
           <Footer />

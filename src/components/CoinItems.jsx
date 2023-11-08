@@ -7,11 +7,15 @@ import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const CoinItems = ({ coin }) => {
+  //state
   const [savedCoin, setSavedCoin] = useState(false);
+
+  // star iconStyle
+  const star = "cursor-pointer hover:scale-125"
 
   const { user } = UserAuth();
 
-  //add data from firestore
+  //add data from firebase firestore
   const coinPath = doc(db, "users", `${user?.email}`);
   const saveCoinHandler = async () => {
     if (user?.email) {
@@ -33,7 +37,7 @@ const CoinItems = ({ coin }) => {
   return (
     <tr key={coin?.id} className="h-[80px] border-b overflow-hidden">
       <td onClick={saveCoinHandler}>
-        {savedCoin ? <AiFillStar /> : <AiOutlineStar />}
+        {savedCoin ? <AiFillStar className={star}/> : <AiOutlineStar className={star}/>}
       </td>
       <td>{coin?.market_cap_rank}</td>
       <td>
