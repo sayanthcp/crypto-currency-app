@@ -14,7 +14,7 @@ const NavBar = () => {
   const handleSignOut = async () => {
     try {
       await logOut();
-      navigate("/");
+      navigate("/signin");
     } catch (e) {
       // console.log(e.message);
     }

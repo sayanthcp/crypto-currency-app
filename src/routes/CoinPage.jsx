@@ -116,7 +116,7 @@ const CoinPage = () => {
             </div>
           </div>
 
-          <div className='flex justify-around p-8'>
+          <div className='flex justify-around p-8 text-xl'>
             <FaTwitter/>
             <FaFacebook/>
             <FaReddit/>

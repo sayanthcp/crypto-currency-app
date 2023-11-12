@@ -31,9 +31,9 @@ const Signin = () => {
             <label>Email</label>
             <div className='my-2 w-full relative rounded-2xl shadow-xl'>
               <input 
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className='w-full p-2 bg-primary border border-input rounded-2xl' type="Email" />
-              {error ? <p className='bg-red-500 text-center p-2 rounded-xl my-2'>Invalid email address</p> : null}
+              { error && <p className='bg-red-500 text-center p-2 rounded-xl my-2'>{error}</p> }
               <AiOutlineMail className='absolute right-2 top-3 text-gray-400'/>
             </div>
           </div>
@@ -41,9 +41,9 @@ const Signin = () => {
             <label>Password</label>
             <div className='my-2 w-full relative rounded-2xl shadow-xl'>
               <input 
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className='w-full p-2 bg-primary border border-input rounded-2xl' type="password" />
-              {error ? <p className='bg-red-500 text-center p-2 rounded-xl my-2'>Invalid password</p> : null}
+              { error && <p className='bg-red-500 text-center p-2 rounded-xl my-2'>{error}</p> }
               <AiFillLock className='absolute right-2 top-3 text-gray-400'/>
             </div>
           </div>
